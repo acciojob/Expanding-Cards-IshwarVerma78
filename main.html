@@ -1,16 +1,101 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Cards</title>
+    <style>
+
+        .container{
+            display: flex;
+            width: 100%;
+            height: 500px;
+            gap: 15px;;
+
+        }
+
+        .panel{
+            flex: 1;
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            transition: flex 0.5s ease;
+        }
+
+       .active{
+            flex: 5;
+        }
+
+    /* Image */
+    .image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Text on image */
+    .img-text{
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-size: 22px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Show text only on active */
+    .panel.active .img-text{
+        opacity: 1;
+    }
+      
+
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <div class="container">
+        <div class="panel " id="panel-1" >
+            <img class="image" src="https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Explore the world">
+            <h3 class="img-text">Explore the world</h3>
+        </div>
 
+        <div class="panel" id="panel-2">
+            <img class="image" src="https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Wild Forest">
+            <h3 class="img-text">Wild Forest</h3>
+        </div>
+
+        <div class="panel" id="panel-3">
+            <img class="image" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80" alt="City on Winter">
+            <h3 class="img-text">City on Winter</h3>
+        </div>
+
+        <div class="panel" id="panel-4">
+            <img class="image" src="https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" alt="Mountain Cloud">
+            <h3 class="img-text">Mountain Cloud</h3>
+        </div>
+
+        <div class="panel" id="panel-5">
+            <img class="image" src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="Sunny Beach">
+            <h3 class="img-text">Sunny Beach</h3>
+        </div>
+    </div>
+
+
+    <script>
+        let container = document.querySelectorAll(".container .panel");
+        console.log(container);
+        
+        let previousImage = null;
+        container.forEach((img)=>{
+            img.addEventListener("click", (e)=>{
+                if(previousImage){
+                    previousImage.classList.remove("active")
+                }
+                img.classList.add("active");
+
+                previousImage = img;
+            })
+        })
+    </script>
 </body>
-
 </html>
